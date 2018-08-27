@@ -83,9 +83,12 @@ class Hangman extends React.Component {
         </div>
 
         <div className="row">
-          <div className="col-12">
+          <div className="col-8">
             <BoxesLetters word={this.props.word} updateLetter={this.updateNewGuessedLetter} alphabet={this.props.alphabet}/>
           </div>
+            <div className="col-4">
+              <div className="hints-box">HINTS WILL GO HERE</div>
+            </div>
         </div>
       </div>
     )}

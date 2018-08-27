@@ -32,7 +32,6 @@ class App extends React.Component {
       data: {data: level},
       success: (data) => {
         let uniqueCount = {};
-
         data.toUpperCase().split('').forEach(function(i) { uniqueCount[i] = (uniqueCount[i]||0) + 1;});
         this.setState({word: data.toUpperCase()});
         this.setState({uniqueCount});
@@ -45,6 +44,17 @@ class App extends React.Component {
 
   componentDidMount() {
     this.updateDifficulty();
+
+    $.ajax({
+      url: '/synonym',
+      data: {data: 'tree'},
+      success: (data) => {
+        console.log('data: ', data)
+      },
+      error: (err) => {
+        console.log('err', err);
+      }
+    });
   }
 
   render () {

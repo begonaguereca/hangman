@@ -1,5 +1,5 @@
 import React from 'react';
-import Astronaut from './Astronaut.jsx';
+import Hint from './Hint.jsx';
 
 
 class ScorePage extends React.Component {

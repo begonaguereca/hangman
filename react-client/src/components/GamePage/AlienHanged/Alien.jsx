@@ -14,7 +14,6 @@ class Alien extends React.Component {
     }
   }
 
-
   render () {
     let monster = null;
 

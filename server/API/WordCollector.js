@@ -1,5 +1,6 @@
 const request = require('request');
 const Promise = require('bluebird');
+const unirest = require('unirest');
 
 
 const getWord = (difficulty) => {

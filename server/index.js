@@ -1,15 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const items = require('../database-mysql');
-const API = require('./API/WordCollector.js');
-
+const WordCollector = require('./API/WordCollector.js');
+const SynonymCollector = require('./API/SynonymFinder.js');
 
 var app = express();
 app.use(express.static(__dirname + '/../react-client/dist'));
 
 
-app.get('/wordBank', function (req, res) {
-  API.getWord(req.query.data)
+app.get('/wordBank', (req, res) => {
+  WordCollector.getWord(req.query.data)
     .then(word => {
       res.json(word);
     })
@@ -17,6 +17,16 @@ app.get('/wordBank', function (req, res) {
       res.sendStatus(500);
     })
 });
+
+app.get('/synonym', (req, res) => {
+  SynonymCollector.getSynonym(req.query.data)
+    .then(synonym => {
+      res.json(synonym);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
 
 app.listen(3000, function() {
   console.log('listening on port 3000!');
