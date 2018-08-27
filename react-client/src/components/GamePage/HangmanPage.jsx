@@ -16,29 +16,43 @@ class Hangman extends React.Component {
     this.state = {
       guessedLetter: '',
       wordArray: this.props.word.split(''),
-      missedLetters: 0
+      missedLetters: 0,
+      correctLetters: 0
     }
     this.updateNewGuessedLetter = this.updateNewGuessedLetter.bind(this);
   }
 
   updateNewGuessedLetter(letter) {
     if(this.props.word.split('').indexOf(letter) === -1) {
-      if(this.state.missedLetters === 6) {
-        $().alert();
-      } else {
-        this.setState({
-          missedLetters: this.state.missedLetters + 1
-        });
+      if(this.state.missedLetters < 6) {
+        this.setState({missedLetters: this.state.missedLetters + 1});
       }
+    } else {
+      this.setState({correctLetters: this.state.correctLetters + 1});
     }
+
     this.setState({
       guessedLetter: letter
     },() => this.forceUpdate());
   }
 
   render () {
+    let alert = null;
+
+    if(this.state.missedLetters === 6) {
+      alert = <div className="alert alert-danger" role="alert">
+                You Lose!
+              </div>
+      }
+
+    if(this.state.correctLetters === this.props.word.split('').length && this.state.missedLetters < 6) {
+      alert = <div className="alert alert-success" role="alert">
+                You Win!
+              </div>
+      }
     return (
-      <div>
+      <div className="hangman-main-page">
+        {alert}
         <div className="row">
           <div className="col-12">
             <NavBar updateDifficulty={this.props.updateDifficulty}/>

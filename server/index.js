@@ -9,7 +9,6 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 
 
 app.get('/wordBank', function (req, res) {
-  console.log(req.query.data)
   API.getWord(req.query.data)
     .then(word => {
       res.json(word);

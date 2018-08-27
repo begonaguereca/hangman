@@ -1,4 +1,5 @@
 import React from 'react';
+import Astronaut from './Astronaut.jsx';
 
 
 class ScorePage extends React.Component {
@@ -14,7 +15,10 @@ class ScorePage extends React.Component {
     return (
       <div className="score-page">
         <div className="character">Your Character</div>
+        {/* <Astronaut /> */}
+        {/* <img src="./img/astronaut" alt="Astronaut"/> */}
         <div className="missed-letters">{this.props.missedLetters} Missed Letters</div>
+        <div className="total-points">0 Total Points</div>
       </div>
     )}
   }

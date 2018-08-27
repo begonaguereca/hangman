@@ -14,7 +14,7 @@ class Game extends React.Component {
     <div>
       <div className="row">
         <div className="col-12">
-          <div className="hangman-img">TODO: make Hangman annimation</div>
+          <div className="hangman-img"></div>
         </div>
       </div>
 

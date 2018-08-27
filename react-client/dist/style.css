@@ -23,13 +23,13 @@ body {
 
 /*Homepage Button*/
 .homepage-button {
-  /*position: relative;*/
+  position: relative;
 }
 
 .homepage-button button {
-  /*position: fixed;
-  top: 50%;
-  right: 47%;*/
+  position: fixed;
+  top: 20%;
+  right: 43%;
 }
 
 .homepage-button button.h-button {
@@ -54,10 +54,17 @@ body {
 }
 
 /**************************HANGMAN********************************/
+
+.hangman-main-page {
+  background: rgba(255,255,255, 0.3);
+  padding-bottom: 20px;
+}
+
 .hangman-img {
   height: 400px;
-  background: white;
-  border: solid 1px grey;
+  background-image: url('./img/space-planets.jpg');
+  background-size: cover;
+  border: solid 4px grey;
   padding: 20px;
   margin: 20px;
 }
@@ -65,21 +72,35 @@ body {
 .letters-guessed {
   margin: 20px;
   height: 100px;
+  width: 500px;
   background: white;
-  border: solid 1px grey;
+  border: solid 4px grey;
 }
 /********************HANGMAN BUTTON LETTERS***********************/
 .letter-buttons {
-  padding: 15px !important;
-  background: red;
-  max-width: 70px;
-  min-width: 70px;
+  padding: 5px !important;
+  margin: 0px !important;;
+}
+
+button.btn.btn-warning {
+  width: 50px;
+  font-size: 20px;
+}
+
+.top-keyboard {
+  margin-left: 20px;
+  margin-right:20px;
+}
+
+.bottom-keyboard {
+  margin-left: 20px;
+  margin-right:20px;
 }
 
 /**********************HANGMAN NAV BAR*****************************/
 
 .navbar-outline {
-  border: solid 1px grey;
+  border: solid 4px grey;
 }
 
 
@@ -90,7 +111,9 @@ body {
 }
 
 .letter-placeholder {
-  border-bottom: 1px solid black;
+  font-size: 30px;
+  text-align: left;
+  border-bottom: 4px solid black;
   margin: 10px;
   min-width: 20px;
   max-width: 20px;
@@ -102,7 +125,7 @@ body {
 .score-page {
   height: 400px;
   background: white;
-  border: solid 1px grey;
+  border: solid 4px grey;
   margin: 20px;
 }
 
@@ -115,7 +138,13 @@ body {
 }
 
 .missed-letters {
-  margin: 20px;
+  margin: 10px 20px 10px 20px;
+  font-size: 25px;
+}
+
+.total-points {
+  margin: 0px 20px 10px 20px;
+  font-size: 25px;
 }
 
 /*******************************ALIEN *********************/
@@ -329,3 +358,5 @@ body {
 
 @keyframes antena_d { 50% {transform: rotate(20deg);} }
 @keyframes antena_e { 50% {transform: rotate(-20deg);} }
+
+/****************************Astronaut **************************/

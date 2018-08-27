@@ -11,7 +11,7 @@ const getWord = (difficulty) => {
   return new Promise((resolve, reject) => {
     request({url, qs}, function (error, response, body) {
       if(error) {
-        reject(err);
+        reject(error);
       } else {
         let wordBank = body.split('\n');
         let selectedIndex = Math.floor(Math.random() * wordBank.length);

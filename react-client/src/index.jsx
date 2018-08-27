@@ -19,7 +19,6 @@ class App extends React.Component {
 
   updateDifficulty(level) {
     this.setState({level});
-
     $.ajax({
       url: '/wordBank',
       data: {data: level},
