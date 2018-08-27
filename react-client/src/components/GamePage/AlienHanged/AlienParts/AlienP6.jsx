@@ -1,9 +1,10 @@
 import React from 'react';
+import {Animated} from "react-animated-css";
 
-const Alien = (props) => {
+const AlienSix= (props) => {
   return (
-    <div className="ufo ufo-main-page">
-      <div className="monster monster-main">
+    <Animated animationIn="zoomOutUp" animationInDelay="200" isVisible={true}>
+      <div className="monster monster-dead">
         <div className="body">
           <div className="ear"></div>
           <div className="ear"></div>
@@ -16,9 +17,13 @@ const Alien = (props) => {
             <div className="eye"></div>
           </div>
         </div>
+        <div className="legs">
+          <div className="alien-right-leg"></div>
+          <div className="alien-left-leg"></div>
+        </div>
       </div>
-    </div>
+    </Animated>
   )
 }
 
-export default Alien;
+export default AlienSix;

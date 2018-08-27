@@ -16,7 +16,7 @@ class Game extends React.Component {
       <div className="row">
         <div className="col-12">
           <div className="hangman-img">
-            <Alien />
+            <Alien missed={this.props.missed}/>
           </div>
         </div>
       </div>

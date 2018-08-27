@@ -1,19 +1,28 @@
 /********************HOMEPAGE***********************/
+.alien-container {
+  position: relative;
+}
+
+.monster-main {
+  top: 150px !important;
+}
+
+.hompage-main .row{
+  /*background: red;*/
+  height: 250px;
+}
 
 /*Homepage Header*/
-.homepage-header {
-  /*position: relative;
-  height: 45em;*/
+.homepage-header-container {
+  position: relative;
 }
 
 .homepage-header h1{
-  /*position: absolute;
-  top: 50%;
-  transform: translate(, -50%);*/
-  text-align: center;
+  position: absolute;
+  top: 120px;
+  left: 120px;
   color: white;
   font-size: 100px;
-  text-align: center;
 }
 
 /*Homepage background*/
@@ -21,19 +30,23 @@ body {
   background-image: url("http://getwallpapers.com/wallpaper/full/2/e/7/773731-new-space-backgrounds-1920x1080-1920x1080.jpg");
 }
 
+.hompage-main {
+  height: 700px;
+}
+
 /*Homepage Button*/
-.homepage-button {
+.homepage-button-container {
   position: relative;
 }
 
-.homepage-button button {
-  position: fixed;
-  top: 20%;
-  right: 43%;
+.homepage-button-container button {
+  position: absolute;
+  top: 50%;
+  right: 420px;
 }
 
-.homepage-button button.h-button {
-  -webkit-transition-duration: 0.4s; /* Safari */
+.homepage-button-container button.h-button {
+  -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
   background: transparent;
   width: 200px;
@@ -46,7 +59,7 @@ body {
   font-weight: 500px;
 }
 
-.homepage-button button.h-button:hover {
+.homepage-button-container button.h-button:hover {
   background: yellow;
   color: black;
   border: 1px solid yellow;
@@ -104,6 +117,14 @@ button.btn.btn-warning {
   border: solid 4px grey;
 }
 
+.level-selection {
+  margin-top: 9px;
+  margin-left: 10px;
+}
+
+.level-selection select{
+  margin-left: 5px;
+}
 
 /*********************HANGMAN LETTERS GUESSED *********************/
 
@@ -136,6 +157,12 @@ button.btn.btn-warning {
   padding: 10px;
   margin: 20px;
   height: 250px;
+}
+
+.character-img {
+  height: 200px;
+  background-image: url('./img/astronaut.png');
+  background-size: cover;
 }
 
 .missed-letters {
@@ -385,4 +412,17 @@ button.btn.btn-warning {
   height: 20px;
   width: 15px;
   right: 20%;
+}
+
+/*****Dead Monster*****/
+.monster-dead {
+  color: #2F4F4F !important;
+}
+
+.alien-right-leg {
+  background: #2F4F4F !important;
+}
+
+.alien-left-leg {
+  background: #2F4F4F !important;
 }

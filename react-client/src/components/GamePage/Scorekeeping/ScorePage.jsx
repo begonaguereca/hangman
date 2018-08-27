@@ -14,9 +14,10 @@ class ScorePage extends React.Component {
   render () {
     return (
       <div className="score-page">
-        <div className="character">Your Character</div>
-        {/* <Astronaut /> */}
-        {/* <img src="./img/astronaut" alt="Astronaut"/> */}
+        <div className="character">
+          <div>Your Character</div>
+          <div className="character-img"></div>
+        </div>
         <div className="missed-letters">{this.props.missedLetters} Missed Letters</div>
         <div className="total-points">0 Total Points</div>
       </div>

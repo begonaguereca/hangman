@@ -21,7 +21,12 @@ class App extends React.Component {
   }
 
   updateDifficulty(level) {
-    this.setState({level});
+    if(typeof(level) === undefined) {
+      level = this.state.level
+    } else {
+      this.setState({level});
+    }
+
     $.ajax({
       url: '/wordBank',
       data: {data: level},
@@ -39,20 +44,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    $.ajax({
-      url: '/wordBank',
-      data: {data: this.state.level},
-      success: (data) => {
-        let uniqueCount = {};
-
-        data.toUpperCase().split('').forEach(function(i) { uniqueCount[i] = (uniqueCount[i]||0) + 1;});
-        this.setState({word: data.toUpperCase()});
-        this.setState({uniqueCount});
-      },
-      error: (err) => {
-        console.log('err', err);
-      }
-    });
+    this.updateDifficulty();
   }
 
   render () {

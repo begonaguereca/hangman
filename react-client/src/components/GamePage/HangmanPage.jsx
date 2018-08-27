@@ -17,7 +17,8 @@ class Hangman extends React.Component {
       guessedLetter: '',
       wordArray: this.props.word.split(''),
       missedLetters: 0,
-      correctLetters: 0
+      correctLetters: 0,
+      alert: null
     }
     this.updateNewGuessedLetter = this.updateNewGuessedLetter.bind(this);
   }
@@ -30,7 +31,6 @@ class Hangman extends React.Component {
         });
       }
     } else {
-      console.log('mult letters', this.props.uniqueCount)
       this.setState((prevState) => {
         return {correctLetters: prevState.correctLetters + this.props.uniqueCount[letter]}
       });
@@ -44,12 +44,14 @@ class Hangman extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.word !== prevProps.word) {
       this.setState({missedLetters: 0});
+      this.setState({correctLetters: 0});
+      this.setState({alert: null});
     }
   }
 
   render () {
     console.log(this.props.word, this.state.correctLetters === this.props.word.split('').length, this.state.correctLetters, this.props.word.split('').length)
-    let alert = null;
+    let alert = this.state.alert;
 
     if(this.state.missedLetters === 6) {
       alert = <div className="alert alert-danger" role="alert">
@@ -64,7 +66,7 @@ class Hangman extends React.Component {
       }
     return (
       <div className="hangman-main-page">
-        {alert}
+      {alert}
         <div className="row">
           <div className="col-12">
             <NavBar updateDifficulty={this.props.updateDifficulty}/>
@@ -73,7 +75,7 @@ class Hangman extends React.Component {
 
         <div className="row">
           <div className="col-8">
-            <Game guessedLetter={this.state.guessedLetter} word={this.props.word}/>
+            <Game guessedLetter={this.state.guessedLetter} word={this.props.word} missed={this.state.missedLetters}/>
           </div>
           <div className="col-4">
             <Scorekeeping missedLetters={this.state.missedLetters} word={this.props.word}/>

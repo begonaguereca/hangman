@@ -13,30 +13,38 @@ class HomePage extends React.Component {
 
   render () {
     return (
-    <div>
+    <div className="hompage-main">
+
+      <div className="row">
+        <div className="col-12">
+          <div className="alien-container">
+            <Alien />
+          </div>
+        </div>
+      </div>
+
       <div className="row">
         <div className="col-12">
           <div className="homepage-header">
             <Animated animationIn="rubberBand" animationOut="fadeOut" isVisible={true}>
-              <h1> SPACE HANGMAN</h1>
+              <div className="homepage-header-container">
+                <h1> SPACE HANGMAN</h1>
+              </div>
             </Animated>
           </div>
         </div>
       </div>
 
       <div className="row">
-        <div className="col-12 homepage-button">
+        <div className="col-12">
           <Link to='/Hangman'>
-            <button type="button" className="h-button">Start Adventure</button>
+            <div className="homepage-button-container">
+              <button type="button" className="h-button">Start Adventure</button>
+            </div>
           </Link>
         </div>
       </div>
 
-      <div className="row">
-        <div className="col-12">
-          <Alien />
-        </div>
-      </div>
     </div>
   )}
 }

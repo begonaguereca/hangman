@@ -1,4 +1,10 @@
 import React from 'react';
+import Alien1 from './AlienParts/AlienP1.jsx';
+import Alien2 from './AlienParts/AlienP2.jsx';
+import Alien3 from './AlienParts/AlienP3.jsx';
+import Alien4 from './AlienParts/AlienP4.jsx';
+import Alien5 from './AlienParts/AlienP5.jsx';
+import Alien6 from './AlienParts/AlienP6.jsx';
 
 class Alien extends React.Component {
   constructor(props) {
@@ -10,27 +16,25 @@ class Alien extends React.Component {
 
 
   render () {
+    let monster = null;
+
+    if(this.props.missed === 1) {
+      monster = <Alien1 />
+    } else if (this.props.missed === 2) {
+      monster = <Alien2 />
+    } else if (this.props.missed === 3) {
+      monster = <Alien3 />
+    } else if (this.props.missed === 4) {
+      monster = <Alien4 />
+    } else if (this.props.missed === 5) {
+      monster = <Alien5 />
+    } else if (this.props.missed === 6) {
+      monster = <Alien6 />
+    }
     return (
       <div className="alien">
         <div className="ufo ufo-game">
-          <div className="monster">
-            <div className="body">
-              <div className="ear"></div>
-              <div className="ear"></div>
-              <div className="vampi-mouth">
-                <div className="vampi-tooth"></div>
-              </div>
-            </div>
-            <div className="eye-lid">
-              <div className="eyes">
-                <div className="eye"></div>
-              </div>
-            </div>
-            <div className="legs">
-              <div className="alien-right-leg"></div>
-              <div className="alien-left-leg"></div>
-            </div>
-          </div>
+          {monster}
         </div>
       </div>
     )}
