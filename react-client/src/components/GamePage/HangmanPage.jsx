@@ -38,7 +38,7 @@ class Hangman extends React.Component {
 
     this.setState({
       guessedLetter: letter
-    },() => this.forceUpdate());
+    });
   }
 
   componentDidUpdate(prevProps) {
@@ -50,7 +50,7 @@ class Hangman extends React.Component {
   }
 
   render () {
-    console.log(this.props.word, this.state.correctLetters === this.props.word.split('').length, this.state.correctLetters, this.props.word.split('').length)
+    console.log(this.props.word)
     let alert = this.state.alert;
 
     if(this.state.missedLetters === 6) {

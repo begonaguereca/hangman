@@ -7,20 +7,25 @@ class LetterPlaceholder extends React.Component {
       displayedValue: ''
     }
   }
-  componentWillUpdate() {
-    // console.log('inside componentWillUpdate-----------------');
-    // console.log('letter: ', this.props.letter)
-    // console.log('guessedLetter: ', this.props.guessedLetter)
-    if(this.props.guessedLetter === this.props.letter) {
-      this.setState({
-        displayedValue: this.props.letter
-      });
-    }
-  }
+  // componentWillUpdate() {
+  //   if(this.props.guessedLetter === this.props.letter) {
+  //     this.setState({
+  //       displayedValue: this.props.letter
+  //     });
+  //   }
+  // }
 
   componentDidUpdate(prevProps) {
     if (this.props.word !== prevProps.word) {
       this.setState({displayedValue: ''});
+    }
+
+    if (this.props.guessedLetter !== prevProps.guessedLetter) {
+      if(this.props.guessedLetter === this.props.letter) {
+        this.setState({
+          displayedValue: this.props.letter
+        });
+      }
     }
   }
 
