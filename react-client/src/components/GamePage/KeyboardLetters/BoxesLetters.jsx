@@ -8,7 +8,7 @@ const BoxesLetters = (props) => {
         { props.alphabet.map((letter, i) => {
           if(i <= 13) {
             return (
-              <Letter letter={letter} updateLetter={props.updateLetter} key={i}/>
+              <Letter letter={letter} updateLetter={props.updateLetter} word={props.word} key={i}/>
             )
           };
         })
@@ -18,7 +18,7 @@ const BoxesLetters = (props) => {
         { props.alphabet.map((letter, i) => {
           if(i >= 13) {
             return (
-              <Letter letter={letter} updateLetter={props.updateLetter} key={i}/>
+              <Letter letter={letter} updateLetter={props.updateLetter} word={props.word} key={i}/>
             )
           };
         })

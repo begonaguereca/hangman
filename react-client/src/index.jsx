@@ -1,3 +1,5 @@
+/*Component did mount should be one munction doing the ajax call*/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter, Route, BrowserRouter as Router} from 'react-router-dom';
@@ -10,8 +12,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       alphabet: [ 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' ],
+      uniqueCount: {},
       level: 1,
-      word: 'TEST',
+      word: '',
       missedLetters: 0
     }
     this.updateDifficulty = this.updateDifficulty.bind(this);
@@ -23,9 +26,11 @@ class App extends React.Component {
       url: '/wordBank',
       data: {data: level},
       success: (data) => {
-        this.setState({
-          word: data.toUpperCase()
-        })
+        let uniqueCount = {};
+
+        data.toUpperCase().split('').forEach(function(i) { uniqueCount[i] = (uniqueCount[i]||0) + 1;});
+        this.setState({word: data.toUpperCase()});
+        this.setState({uniqueCount});
       },
       error: (err) => {
         console.log('err', err);
@@ -38,9 +43,11 @@ class App extends React.Component {
       url: '/wordBank',
       data: {data: this.state.level},
       success: (data) => {
-        this.setState({
-          word: data.toUpperCase()
-        })
+        let uniqueCount = {};
+
+        data.toUpperCase().split('').forEach(function(i) { uniqueCount[i] = (uniqueCount[i]||0) + 1;});
+        this.setState({word: data.toUpperCase()});
+        this.setState({uniqueCount});
       },
       error: (err) => {
         console.log('err', err);
@@ -56,7 +63,7 @@ class App extends React.Component {
            <Route exact path='/'
              render={() => <HomePage/>}/>
            <Route exact path='/Hangman'
-              render={() => <Hangman word={this.state.word} alphabet={this.state.alphabet} updateDifficulty={this.updateDifficulty}/>}/>
+              render={() => <Hangman uniqueCount={this.state.uniqueCount} word={this.state.word} alphabet={this.state.alphabet} updateDifficulty={this.updateDifficulty}/>}/>
          </div>
        </HashRouter>
      </div>

@@ -4,7 +4,7 @@ import LetterPlaceholder from './LetterPlaceholder.jsx';
 const LettersToGuess = (props) => {
   return (
     <div className="row letters-to-guess">
-      { props.word.split('').map((letter, i) => <LetterPlaceholder letter={letter} guessedLetter={props.guessedLetter} key={i}/>) }
+      { props.word.split('').map((letter, i) => <LetterPlaceholder letter={letter} guessedLetter={props.guessedLetter} word={props.word} key={i}/>) }
     </div>
   )
 }

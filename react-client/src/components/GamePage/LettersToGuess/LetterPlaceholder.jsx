@@ -18,6 +18,12 @@ class LetterPlaceholder extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.word !== prevProps.word) {
+      this.setState({displayedValue: ''});
+    }
+  }
+
   render () {
     return (
     <div className="col col-sm-12 letter-placeholder text-left">

@@ -4,7 +4,8 @@ class Letter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      clicked: false
+      clicked: false,
+      currentWord: ''
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -12,6 +13,12 @@ class Letter extends React.Component {
   handleClick() {
     this.setState({clicked: true});
     this.props.updateLetter(this.props.letter);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.word !== prevProps.word) {
+      this.setState({clicked: false});
+    }
   }
 
   render () {

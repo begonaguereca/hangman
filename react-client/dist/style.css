@@ -63,6 +63,7 @@ body {
 .hangman-img {
   height: 400px;
   background-image: url('./img/space-planets.jpg');
+  background-position: 50% 60%;
   background-size: cover;
   border: solid 4px grey;
   padding: 20px;
@@ -342,7 +343,6 @@ button.btn.btn-warning {
 }
 
 
-
 @keyframes blink {
   0%, 2%, 60%, 62%, 100% { transform: scaleX(1) scaleY(1); }
   1%, 61% { transform: scaleX(1.3) scaleY(0.1); }
@@ -359,4 +359,30 @@ button.btn.btn-warning {
 @keyframes antena_d { 50% {transform: rotate(20deg);} }
 @keyframes antena_e { 50% {transform: rotate(-20deg);} }
 
-/****************************Astronaut **************************/
+/****************************Alien on the Gamepage**************************/
+
+.alien {
+  position: relative;
+}
+
+.alien {
+  position: absolute;
+  top: -20%;
+  right: 40%;
+}
+
+.alien-right-leg {
+  position: absolute;
+  background: green;
+  height: 20px;
+  width: 15px;
+  right: 70%;
+}
+
+.alien-left-leg {
+  position: absolute;
+  background: green;
+  height: 20px;
+  width: 15px;
+  right: 20%;
+}

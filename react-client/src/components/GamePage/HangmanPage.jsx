@@ -25,10 +25,15 @@ class Hangman extends React.Component {
   updateNewGuessedLetter(letter) {
     if(this.props.word.split('').indexOf(letter) === -1) {
       if(this.state.missedLetters < 6) {
-        this.setState({missedLetters: this.state.missedLetters + 1});
+        this.setState((prevState) => {
+          return {missedLetters: prevState.missedLetters + 1}
+        });
       }
     } else {
-      this.setState({correctLetters: this.state.correctLetters + 1});
+      console.log('mult letters', this.props.uniqueCount)
+      this.setState((prevState) => {
+        return {correctLetters: prevState.correctLetters + this.props.uniqueCount[letter]}
+      });
     }
 
     this.setState({
@@ -36,7 +41,14 @@ class Hangman extends React.Component {
     },() => this.forceUpdate());
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.word !== prevProps.word) {
+      this.setState({missedLetters: 0});
+    }
+  }
+
   render () {
+    console.log(this.props.word, this.state.correctLetters === this.props.word.split('').length, this.state.correctLetters, this.props.word.split('').length)
     let alert = null;
 
     if(this.state.missedLetters === 6) {
@@ -45,7 +57,7 @@ class Hangman extends React.Component {
               </div>
       }
 
-    if(this.state.correctLetters === this.props.word.split('').length && this.state.missedLetters < 6) {
+    if( this.state.correctLetters !== 0 && (this.state.correctLetters === this.props.word.split('').length) && this.state.missedLetters < 6) {
       alert = <div className="alert alert-success" role="alert">
                 You Win!
               </div>
@@ -64,13 +76,13 @@ class Hangman extends React.Component {
             <Game guessedLetter={this.state.guessedLetter} word={this.props.word}/>
           </div>
           <div className="col-4">
-            <Scorekeeping missedLetters={this.state.missedLetters}/>
+            <Scorekeeping missedLetters={this.state.missedLetters} word={this.props.word}/>
           </div>
         </div>
 
         <div className="row">
           <div className="col-12">
-            <BoxesLetters updateLetter={this.updateNewGuessedLetter} alphabet={this.props.alphabet}/>
+            <BoxesLetters word={this.props.word} updateLetter={this.updateNewGuessedLetter} alphabet={this.props.alphabet}/>
           </div>
         </div>
       </div>
