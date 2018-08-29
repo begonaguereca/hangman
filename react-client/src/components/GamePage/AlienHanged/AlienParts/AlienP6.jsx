@@ -3,7 +3,7 @@ import {Animated} from "react-animated-css";
 
 const AlienSix= (props) => {
   return (
-    <Animated animationIn="zoomOutUp" animationInDelay="200" isVisible={true}>
+    <Animated animationIn="zoomOutUp" isVisible={true}>
       <div className="monster monster-dead">
         <div className="body">
           <div className="ear"></div>

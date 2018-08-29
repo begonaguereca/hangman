@@ -1,7 +1,6 @@
 import React from 'react';
 import Hint from './Hint.jsx';
 
-
 class ScorePage extends React.Component {
   constructor(props) {
     super(props);
@@ -10,16 +9,27 @@ class ScorePage extends React.Component {
     }
   }
 
-
   render () {
     return (
       <div className="score-page">
-        <div className="character">
-          <div>Your Character</div>
-          <div className="character-img"></div>
+        <div className='row'>
+          <div className="col-12">
+            <div className="character">
+              <div>{this.props.username}</div>
+              <div className="character-img"></div>
+            </div>
+            <div className="missed-letters">{this.props.missedLetters} Missed Letters</div>
+            <div className="total-points">{this.props.score} Total Points</div>
+          </div>
         </div>
-        <div className="missed-letters">{this.props.missedLetters} Missed Letters</div>
-        <div className="total-points">0 Total Points</div>
+
+        <div className='row'>
+          <div className="col-12">
+            <div className="hints-box">
+              <Hint hints={this.props.hints} word={this.props.word} decrementPoints ={this.props.decrementPoints} />
+            </div>
+          </div>
+        </div>
       </div>
     )}
   }

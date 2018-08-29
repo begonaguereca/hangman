@@ -1,7 +1,5 @@
 const request = require('request');
 const Promise = require('bluebird');
-const unirest = require('unirest');
-
 
 const getWord = (difficulty) => {
   const url = 'http://app.linkedin-reach.io/words';
@@ -10,7 +8,7 @@ const getWord = (difficulty) => {
   const qs = { difficulty, maxLength, minLength};
 
   return new Promise((resolve, reject) => {
-    request({url, qs}, function (error, response, body) {
+    request({url, qs}, (error, response, body) => {
       if(error) {
         reject(error);
       } else {

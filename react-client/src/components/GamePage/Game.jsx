@@ -1,5 +1,5 @@
 import React from 'react';
-import LettersToGuess from './LettersToGuess/LettersToGuess.jsx';
+import Placeholder from './LettersToGuess/LettersToGuess.jsx';
 import Alien from './AlienHanged/Alien.jsx';
 
 class Game extends React.Component {
@@ -22,9 +22,9 @@ class Game extends React.Component {
       </div>
 
     <div className="row">
-      <div className="col-sm-9">
+      <div className="col-9 col-sm-9">
         <div className="letters-guessed">
-          <LettersToGuess word={this.props.word} guessedLetter={this.props.guessedLetter} word={this.props.word}/>
+          <Placeholder word={this.props.word} guessedLetter={this.props.guessedLetter} word={this.props.word}/>
         </div>
       </div>
     </div>

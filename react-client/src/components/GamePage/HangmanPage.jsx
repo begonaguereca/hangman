@@ -1,11 +1,10 @@
   /*
   1. I dont like that i split the array every time a letter is guessed
-  2. The force update is in an infinate loop
   */
 
 import React from 'react';
-import NavBar from './NavBar.jsx';
-import BoxesLetters from './KeyboardLetters/BoxesLetters.jsx';
+import NavBar from './Navbar/NavBar.jsx';
+import Keyboard from './Keyboard/BoxesLetters.jsx';
 import Scorekeeping from './Scorekeeping/ScorePage.jsx';
 import Game from './Game.jsx';
 import $ from 'jquery';
@@ -34,11 +33,14 @@ class Hangman extends React.Component {
       this.setState((prevState) => {
         return {correctLetters: prevState.correctLetters + this.props.uniqueCount[letter]}
       });
-    }
 
-    this.setState({
-      guessedLetter: letter
-    });
+      //Game is won, trigger keyboard to turn off letters
+      if(this.state.correctLetters !== 0 && (this.state.correctLetters + 1 === this.props.word.split('').length) && this.state.missedLetters < 6) {
+        this.props.updateRoundOver();
+        this.props.incrementPoints();
+      }
+    }
+    this.setState({guessedLetter: letter});
   }
 
   componentDidUpdate(prevProps) {
@@ -50,18 +52,18 @@ class Hangman extends React.Component {
   }
 
   render () {
-    console.log(this.props.word)
+    console.log(this.props.word);
     let alert = this.state.alert;
 
-    if(this.state.missedLetters === 6) {
+    if(this.state.missedLetters === 6 && !this.state.roundOver) {
       alert = <div className="alert alert-danger" role="alert">
-                You Lose!
+                Oh no! You gussed too many incorrect letters, the word was {this.props.word}
               </div>
       }
 
-    if( this.state.correctLetters !== 0 && (this.state.correctLetters === this.props.word.split('').length) && this.state.missedLetters < 6) {
+    if(!this.state.roundOver && this.state.correctLetters !== 0 && (this.state.correctLetters === this.props.word.split('').length) && this.state.missedLetters < 6) {
       alert = <div className="alert alert-success" role="alert">
-                You Win!
+                Great job! You gussed the word! Keep trying harder levels
               </div>
       }
     return (
@@ -69,30 +71,42 @@ class Hangman extends React.Component {
       {alert}
         <div className="row">
           <div className="col-12">
-            <NavBar updateDifficulty={this.props.updateDifficulty}/>
+            <NavBar updateDifficulty={this.props.updateDifficulty}
+                    updateUsername={this.props.updateUsername}
+                    resetScore={this.props.resetScore}
+                  />
           </div>
         </div>
 
         <div className="row">
           <div className="col-8">
-            <Game guessedLetter={this.state.guessedLetter} word={this.props.word} missed={this.state.missedLetters}/>
+            <Game guessedLetter={this.state.guessedLetter}
+                  word={this.props.word}
+                  missed={this.state.missedLetters}
+                />
           </div>
           <div className="col-4">
-            <Scorekeeping missedLetters={this.state.missedLetters} word={this.props.word}/>
+            <Scorekeeping username={this.props.username}
+                          score={this.props.score}
+                          hints={this.props.hints}
+                          missedLetters={this.state.missedLetters}
+                          word={this.props.word}
+                          decrementPoints ={this.props.decrementPoints}
+                          updateDifficulty={this.props.updateDifficulty}
+                        />
           </div>
         </div>
 
         <div className="row">
-          <div className="col-8">
-            <BoxesLetters word={this.props.word} updateLetter={this.updateNewGuessedLetter} alphabet={this.props.alphabet}/>
+          <div className="col-12">
+            <Keyboard word={this.props.word}
+                      updateLetter={this.updateNewGuessedLetter}
+                      roundOver={this.props.roundOver}
+                      alphabet={this.props.alphabet}/>
           </div>
-            <div className="col-4">
-              <div className="hints-box">HINTS WILL GO HERE</div>
-            </div>
         </div>
       </div>
     )}
   }
-
 
 export default Hangman;

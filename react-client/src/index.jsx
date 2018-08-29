@@ -6,35 +6,68 @@ import {HashRouter, Route, BrowserRouter as Router} from 'react-router-dom';
 import $ from 'jquery';
 import HomePage from './components/Homepage/HomePage.jsx';
 import Hangman from './components/GamePage/HangmanPage.jsx';
+import Username from './components/UsernamePage/Username.jsx';
+import Leaders from './components/LeaderboardPage/Leaders.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      alphabet: [ 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' ],
       uniqueCount: {},
       level: 1,
-      word: '',
-      missedLetters: 0
+      word: 'SPACE',
+      missedLetters: 0,
+      hints: null,
+      roundOver: false,
+      username: '',
+      score: 50,
+      leaders : [{name: 'XueSpacer', score: 10000}, {name: 'WinnerWinner', score: 2000}, {name: 'ImHereForCupcakes', score: 500}, {name: 'AllIDoIsWin', score: 300}, {name: 'KeepItCoing', score: 200} ]
     }
     this.updateDifficulty = this.updateDifficulty.bind(this);
+    this.getSynonym = this.getSynonym.bind(this);
+    this.updateUsername = this.updateUsername.bind(this);
+    this.decrementPoints = this.decrementPoints.bind(this);
+    this.incrementPoints = this.incrementPoints.bind(this);
+    this.updateRoundOver = this.updateRoundOver.bind(this);
+    this.resetScore = this.resetScore.bind(this);
+    this.getTopScoringPlayers = this.getTopScoringPlayers.bind(this);
+  }
+
+  updateRoundOver() {
+    this.setState({roundOver: true});
+  }
+
+  updateUsername(name) {
+    this.setState({username: name});
+  }
+
+  decrementPoints(points) {
+    let newScore = this.state.score - points;
+    this.setState({score: newScore});
+  }
+
+  incrementPoints() {
+    let newScore = (this.state.level * 10) + this.state.score;
+    this.setState({score: newScore});
+  }
+
+  resetScore() {
+    this.setState({score: 50});
   }
 
   updateDifficulty(level) {
-    if(typeof(level) === undefined) {
-      level = this.state.level
-    } else {
-      this.setState({level});
-    }
+    this.setState({level});
 
     $.ajax({
       url: '/wordBank',
       data: {data: level},
-      success: (data) => {
+      success: (word) => {
         let uniqueCount = {};
-        data.toUpperCase().split('').forEach(function(i) { uniqueCount[i] = (uniqueCount[i]||0) + 1;});
-        this.setState({word: data.toUpperCase()});
+        word.toUpperCase().split('').forEach(function(i) { uniqueCount[i] = (uniqueCount[i]||0) + 1;});
+        this.setState({word: word.toUpperCase()});
         this.setState({uniqueCount});
+        this.getSynonym(word);
+        this.setState({roundOver: false});
       },
       error: (err) => {
         console.log('err', err);
@@ -43,13 +76,27 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.updateDifficulty();
+    this.updateDifficulty(1);
+  }
 
+  getSynonym(word) {
     $.ajax({
       url: '/synonym',
-      data: {data: 'tree'},
-      success: (data) => {
-        console.log('data: ', data)
+      data: {data: word},
+      success: (hints) => {
+        this.setState({hints});
+      },
+      error: (err) => {
+        console.log('err', err);
+      }
+    });
+  }
+
+  getTopScoringPlayers() {
+    $.ajax({
+      url: '/leaders',
+      success: (leaders) => {
+        console.log('LEADERS: ', leaders)
       },
       error: (err) => {
         console.log('err', err);
@@ -64,8 +111,26 @@ class App extends React.Component {
          <div>
            <Route exact path='/'
              render={() => <HomePage/>}/>
+           <Route exact path='/Username'
+             render={() => <Username updateUsername={this.updateUsername}/>}/>
            <Route exact path='/Hangman'
-              render={() => <Hangman uniqueCount={this.state.uniqueCount} word={this.state.word} alphabet={this.state.alphabet} updateDifficulty={this.updateDifficulty}/>}/>
+              render={() => <Hangman username={this.state.username}
+                                     updateUsername={this.updateUsername}
+                                     score={this.state.score}
+                                     decrementPoints={this.decrementPoints}
+                                     incrementPoints={this.incrementPoints}
+                                     uniqueCount={this.state.uniqueCount}
+                                     word={this.state.word}
+                                     hints={this.state.hints}
+                                     roundOver ={this.state.roundOver}
+                                     updateDifficulty={this.updateDifficulty}
+                                     updateRoundOver={this.updateRoundOver}
+                                     resetScore={this.resetScore}
+
+                                   />
+                                 }/>
+           <Route exact path='/Leaders'
+              render={() => <Leaders leaders={this.state.leaders}/>}/>
          </div>
        </HashRouter>
      </div>

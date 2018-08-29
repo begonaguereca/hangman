@@ -1,5 +1,4 @@
 import React from 'react';
-import Hangman from '../GamePage/HangmanPage.jsx';
 import Alien from './Alien.jsx'
 import {Link} from 'react-router-dom';
 import {Animated} from "react-animated-css";
@@ -25,19 +24,17 @@ class HomePage extends React.Component {
 
       <div className="row">
         <div className="col-12">
-          <div className="homepage-header">
-            <Animated animationIn="rubberBand" animationOut="fadeOut" isVisible={true}>
-              <div className="homepage-header-container">
-                <h1> SPACE HANGMAN</h1>
-              </div>
-            </Animated>
-          </div>
+          <Animated className="align-middle" animationIn="rubberBand" animationOut="fadeOut" isVisible={true}>
+            <div className="homepage-header-container">
+              <h1 className="text-center">SPACE HANGMAN</h1>
+            </div>
+          </Animated>
         </div>
       </div>
 
       <div className="row">
         <div className="col-12">
-          <Link to='/Hangman'>
+          <Link to='/Username'>
             <div className="homepage-button-container">
               <button type="button" className="h-button">Start Adventure</button>
             </div>

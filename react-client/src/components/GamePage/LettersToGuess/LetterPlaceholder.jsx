@@ -7,13 +7,6 @@ class LetterPlaceholder extends React.Component {
       displayedValue: ''
     }
   }
-  // componentWillUpdate() {
-  //   if(this.props.guessedLetter === this.props.letter) {
-  //     this.setState({
-  //       displayedValue: this.props.letter
-  //     });
-  //   }
-  // }
 
   componentDidUpdate(prevProps) {
     if (this.props.word !== prevProps.word) {
@@ -31,7 +24,7 @@ class LetterPlaceholder extends React.Component {
 
   render () {
     return (
-    <div className="col col-sm-12 letter-placeholder text-left">
+    <div className="col col-sm-12 letter-placeholder text-center">
       {this.state.displayedValue}
     </div>
   )}
