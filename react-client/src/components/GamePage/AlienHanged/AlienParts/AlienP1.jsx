@@ -12,7 +12,6 @@ const AlienOne = (props) => {
       </div>
     </div>
   </Animated>
-  )
-}
+)};
 
 export default AlienOne;

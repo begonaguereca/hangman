@@ -1,4 +1,3 @@
-/*add the disabled prop*/
 import React from 'react';
 import Popover from 'react-simple-popover';
 
@@ -52,5 +51,6 @@ class HintTwo extends React.Component {
         </Popover>
       </div>
     )}
-  }
+  };
+
 export default HintTwo;

@@ -28,6 +28,6 @@ class LetterPlaceholder extends React.Component {
       {this.state.displayedValue}
     </div>
   )}
-}
+};
 
 export default LetterPlaceholder;

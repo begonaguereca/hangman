@@ -1,5 +1,3 @@
-/*Component did mount should be one munction doing the ajax call*/
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter, Route, BrowserRouter as Router} from 'react-router-dom';
@@ -21,7 +19,7 @@ class App extends React.Component {
       roundOver: false,
       username: '',
       score: 50,
-      leaders : [{name: 'XueSpacer', score: 10000}, {name: 'WinnerWinner', score: 2000}, {name: 'ImHereForCupcakes', score: 500}, {name: 'AllIDoIsWin', score: 300}, {name: 'KeepItCoing', score: 200} ]
+      leaders : []
     }
     this.updateDifficulty = this.updateDifficulty.bind(this);
     this.getSynonym = this.getSynonym.bind(this);
@@ -93,10 +91,13 @@ class App extends React.Component {
   }
 
   getTopScoringPlayers() {
+    let newPlayersData = {name: this.state.username, score: this.state.score};
+
     $.ajax({
       url: '/leaders',
+      data: {data: newPlayersData},
       success: (leaders) => {
-        console.log('LEADERS: ', leaders)
+        this.setState({leaders});
       },
       error: (err) => {
         console.log('err', err);
@@ -126,7 +127,7 @@ class App extends React.Component {
                                      updateDifficulty={this.updateDifficulty}
                                      updateRoundOver={this.updateRoundOver}
                                      resetScore={this.resetScore}
-
+                                     getTopScoringPlayers={this.getTopScoringPlayers}
                                    />
                                  }/>
            <Route exact path='/Leaders'

@@ -8,7 +8,7 @@ class GameRules extends React.Component {
   render () {
     return (
     <div>
-      <li className="nav-item active">
+      <li className="nav-item game-rules active">
         <a className="nav-link"
           ref="target"
           data-toggle="modal"
@@ -28,7 +28,11 @@ class GameRules extends React.Component {
               <div className="modal-body">
                 -	At the start of the game the computer/secret-keeper will choose a dictionary word {<br/>}
                 -	The guesser loses the game if they guess 6 letters that are not in the secret word {<br/>}
-                -	The guesser wins the game if they guess all letters in the secret word correctly and have not already lost the game per the conditions above {<br/>}
+                -	The guesser wins the round if they guess all letters in the secret word correctly and have not already lost the game per the conditions above {<br/>}
+                -	You can choose to solve words that are at different levels of difficulty {<br/>}
+                -	If you solve a word at a higher level it is worth more points (Level 1: 10 pts, Level 2: 20pts, Level 3: 30pts, etc...) {<br/>}
+                -	Hints are sometimes available, if you chose to use a hint you will be deducted - 1pt per hint used {<br/>}
+                - Once you're done playing, click the "Game Over" button and see if you made the scoreboard! {<br/>}
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

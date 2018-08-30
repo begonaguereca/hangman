@@ -7,6 +7,6 @@ const LettersToGuess = (props) => {
       { props.word.split('').map((letter, i) => <LetterPlaceholder letter={letter} guessedLetter={props.guessedLetter} word={props.word} key={i}/>) }
     </div>
   )
-}
+};
 
 export default LettersToGuess;

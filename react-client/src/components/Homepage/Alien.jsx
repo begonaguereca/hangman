@@ -18,7 +18,6 @@ const Alien = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+)};
 
 export default Alien;

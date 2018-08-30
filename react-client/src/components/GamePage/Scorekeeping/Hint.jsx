@@ -1,21 +1,13 @@
-/*add the disabled prop*/
 import React from 'react';
 import HintOne from './Hint1.jsx';
 import HintTwo from './Hint2.jsx';
 
-class Hint extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-  }
+const Hint = (props) => {
+  return (
+    <div className="btn-hint-group row">
+      <HintOne hints={props.hints} word={props.word} decrementPoints ={props.decrementPoints}  />
+      <HintTwo hints={props.hints} word={props.word} decrementPoints ={props.decrementPoints} />
+    </div>
+)};
 
-  render () {
-    return (
-      <div className="btn-hint-group row">
-        <HintOne hints={this.props.hints} word={this.props.word} decrementPoints ={this.props.decrementPoints}  />
-        <HintTwo hints={this.props.hints} word={this.props.word} decrementPoints ={this.props.decrementPoints} />
-      </div>
-    )}
-  }
 export default Hint;

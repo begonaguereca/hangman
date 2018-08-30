@@ -1,6 +1,3 @@
-/*
-2. Need to work out the Game Rules section
-*/
 import React from 'react';
 import $ from 'jquery';
 import {Link} from 'react-router-dom';
@@ -17,6 +14,7 @@ class NavBar extends React.Component {
     this.props.updateDifficulty(1);
     this.props.updateUsername('');
     this.props.resetScore();
+    this.props.getTopScoringPlayers();
   }
 
   render () {
@@ -25,23 +23,18 @@ class NavBar extends React.Component {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="#">Space Hangman</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
+         <span className="navbar-toggler-icon"></span>
+       </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <GameRules />
-            <GameLevel updateDifficulty={this.props.updateDifficulty}/>
+            <GameLevel updateDifficulty={this.props.updateDifficulty} />
           </ul>
 
           <Link to='/Leaders'>
             <form className="form-inline my-2 my-lg-0">
-              <button className="btn btn-warning my-2 my-sm-0" type="submit" onClick={this.handleClick}>Leader Board</button>
-            </form>
-          </Link>
-          <Link to='/'>
-            <form className="form-inline my-2 my-lg-0">
-              <button className="btn btn-danger my-2 my-sm-0" type="submit" onClick={this.handleClick}>Start Over</button>
+              <button className="btn btn-danger my-2 my-sm-0" type="submit" onClick={this.handleClick}>Game Over</button>
             </form>
           </Link>
         </div>

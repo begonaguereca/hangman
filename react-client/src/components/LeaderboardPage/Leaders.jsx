@@ -24,12 +24,12 @@ const Leaders = (props) => {
         </tbody>
       </table>
 
-      <Link to='/Hangman'>
+      <Link to='/'>
         <div className="username-button-container text-center">
-          <button type="button" className="h-button">Keep Playing!</button>
+          <button type="button" className="h-button">Play Again!</button>
         </div>
       </Link>
     </div>
-  )}
+  )};
 
 export default Leaders;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Animated} from "react-animated-css";
 
-const AlienSix= (props) => {
+const AlienSix = (props) => {
   return (
     <Animated animationIn="zoomOutUp" isVisible={true}>
       <div className="monster monster-dead">
@@ -23,7 +23,6 @@ const AlienSix= (props) => {
         </div>
       </div>
     </Animated>
-  )
-}
+)};
 
 export default AlienSix;

@@ -34,7 +34,7 @@ class Hangman extends React.Component {
         return {correctLetters: prevState.correctLetters + this.props.uniqueCount[letter]}
       });
 
-      //Game is won, trigger keyboard to turn off letters
+      //Game is won
       if(this.state.correctLetters !== 0 && (this.state.correctLetters + 1 === this.props.word.split('').length) && this.state.missedLetters < 6) {
         this.props.updateRoundOver();
         this.props.incrementPoints();
@@ -65,7 +65,8 @@ class Hangman extends React.Component {
       alert = <div className="alert alert-success" role="alert">
                 Great job! You gussed the word! Keep trying harder levels
               </div>
-      }
+
+    }
     return (
       <div className="hangman-main-page">
       {alert}
@@ -74,6 +75,7 @@ class Hangman extends React.Component {
             <NavBar updateDifficulty={this.props.updateDifficulty}
                     updateUsername={this.props.updateUsername}
                     resetScore={this.props.resetScore}
+                    getTopScoringPlayers={this.props.getTopScoringPlayers}
                   />
           </div>
         </div>

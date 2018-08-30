@@ -9,9 +9,6 @@ import Alien6 from './AlienParts/AlienP6.jsx';
 class Alien extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    }
   }
 
   render () {

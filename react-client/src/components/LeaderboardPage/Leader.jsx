@@ -7,6 +7,6 @@ const Leader = (props) => {
       <td>{props.name}</td>
       <td>{props.score}</td>
     </tr>
-  )}
+  )};
 
 export default Leader;

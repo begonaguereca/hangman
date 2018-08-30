@@ -14,7 +14,6 @@ const AlienTwo = (props) => {
         </div>
       </div>
     </Animated>
-  )
-}
+)};
 
 export default AlienTwo;

@@ -3,17 +3,9 @@ import Alien from './Alien.jsx'
 import {Link} from 'react-router-dom';
 import {Animated} from "react-animated-css";
 
-class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-  }
-
-  render () {
-    return (
+const HomePage = (props) => {
+  return (
     <div className="hompage-main">
-
       <div className="row">
         <div className="col-12">
           <div className="alien-container">
@@ -41,9 +33,7 @@ class HomePage extends React.Component {
           </Link>
         </div>
       </div>
-
     </div>
-  )}
-}
+)};
 
 export default HomePage;

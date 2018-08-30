@@ -141,11 +141,9 @@ button.btn.keyboard-buttons {
 }
 
 /**********************HANGMAN NAV BAR*****************************/
-.logo {
-  background-image: url('./img/export.png');
-  background-position: 50% 60%;
-  background-size: cover;
-  height: 200px;
+
+ul.navbar-nav {
+  margin-top: 5px;
 }
 
 .navbar-outline {
@@ -154,13 +152,23 @@ button.btn.keyboard-buttons {
   border-bottom: solid 4px grey;
 }
 
+.new-word-button{
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+/*Drop down - level selections */
 .level-selection {
-  margin-top: 9px;
   margin-left: 10px;
 }
 
 .level-selection select{
+  margin-top: 6px;
   margin-left: 5px;
+  padding: 10px;
+  height: 30px;
+  font-size: 14px;
 }
 
 /*********************HANGMAN LETTERS GUESSED *********************/
@@ -633,5 +641,22 @@ h1.leaders-header{
 
   .btn-hint-two {
     font-size: 5px;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .homepage-header-container h1 {
+    font-size: 90px;
+  }
+  .homepage-button-container button {
+    right: 340px;
+  }
+
+  .btn-hint-one {
+    font-size: 12px;
+  }
+
+  .btn-hint-two {
+    font-size: 12px;
   }
 }
