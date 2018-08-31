@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "start": "nodemon server/index.js",
-    "test": "NODE_ENV=test mocha --reporter spec"
+    "start": "nodemon server/index.js"
   },
   "author": "Begona Guereca",
   "license": "ISC",
