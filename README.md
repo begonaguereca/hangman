@@ -56,9 +56,9 @@ The player will try to solve the answer by guessing one letter at a time:
 8. Display LeaderBoard
 
 
-##Ideas for Future Enhancements
+## Ideas for Future Enhancements
 
 - Add tests
 - Adding a database so that people can save games
 - Add multiplayer functionality
-- Improve UI of NavBar, and pop-overs for Hints 
+- Improve UI of NavBar, and pop-overs for Hints
