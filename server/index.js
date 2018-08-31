@@ -4,6 +4,7 @@ const items = require('../database-mysql');
 const WordCollector = require('./API/WordCollector.js');
 const SynonymCollector = require('./API/SynonymFinder.js');
 const LeaderCalc = require('./Leaders/leaders.js');
+const port = process.env.PORT || 3000;
 
 var app = express();
 app.use(express.static(__dirname + '/../react-client/dist'));
@@ -33,6 +34,6 @@ app.get('/leaders', (req, res) => {
   res.json(leaderBoard);
 })
 
-app.listen(3000, function() {
-  console.log('listening on port 3000!');
+app.listen(port, function() {
+  console.log(`Listening on http://localhost:${port}/`);
 });
